@@ -1,0 +1,71 @@
+_________________________________
+Way 1: 
+____________________________
+
+
+// User function Template for Java
+
+class Solution {
+    public static String betterString(String str1, String str2) {
+        // Code here
+        Set<String> set =new HashSet<>();
+        
+      fun(str1 , set , 0 , new StringBuilder());
+      int one =set.size();
+      set.clear();
+      fun(str2 , set, 0, new StringBuilder());
+      int two =set.size();
+      if(one>=two) return str1;
+      return str2;
+    }
+    
+    public static void fun(String s ,Set<String> set , int i, StringBuilder sb){
+        if(i==s.length()){
+            set.add(sb.toString());
+            return ;
+        }
+        
+        sb.append(s.charAt(i));
+        fun(s,set,i+1,sb);
+        sb.deleteCharAt(sb.length()-1);
+        fun(s,set,i+1,sb);
+    }
+}
+
+________________________________________________
+way 2: 
+_____________________________________
+
+
+// User function Template for Java
+
+class Solution {
+    public static String betterString(String str1, String str2) {
+        // Code here
+        Set<String> set =new HashSet<>();
+        
+      fun(str1 , set , 0 , new StringBuilder());
+      int one =set.size();
+      set.clear();
+      fun(str2 , set, 0, new StringBuilder());
+      int two =set.size();
+      if(one>=two) return str1;
+      return str2;
+    }
+    
+    public static void fun(String s ,Set<String> set , int i, StringBuilder sb){
+        
+            set.add(sb.toString());
+        
+        for(int j=i; j<s.length();j++){
+            sb.append(s.charAt(j));
+            fun(s,set,j+1,sb);
+            sb.deleteCharAt(sb.length()-1);
+        }
+    }
+}
+_____________________________________________________________
+
+
+
+
