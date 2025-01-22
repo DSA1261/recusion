@@ -1,3 +1,67 @@
+Question 1 . print all subsequence that equal to target value 
+________________________________________________________________
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        int[] arr={1,2,1};
+        int target=2 ;
+        fun(arr, target, new ArrayList<>() ,0,0);
+    }
+    
+    public static void fun(int[] arr,int target,List<Integer> list, int i,int sum){
+        if(i==arr.length) {
+            if(sum==target){
+            System.out.println(list);}
+            return ;
+        }
+        list.add(arr[i]); sum+=arr[i];
+        fun(arr, target, list, i+1,sum);
+        list.remove(list.size()-1); sum-=arr[i];
+        fun(arr, target, list, i+1,sum);
+    }
+}
+
+____________________________________________________-
+output : 
+[1, 1]
+[2]
+_________________________________________________
+
+Question 2: print any one of the total number 
+______________________________________________________________________________
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        int[] arr={1,2,1};
+        int target=2 ;
+        fun(arr, target, new ArrayList<>() ,0,0);
+    }
+    
+public static boolean fun(int[] arr,int target,List<Integer> list, int i,int sum){
+        if(i==arr.length) {
+            if(sum==target){
+            System.out.println(list);
+                return true;
+            }
+            return false;
+        }
+        list.add(arr[i]); sum+=arr[i];
+       if (fun(arr, target, list, i+1,sum)==true){
+           return true;
+       }
+        list.remove(list.size()-1); sum-=arr[i];
+        if(fun(arr, target, list, i+1,sum)==true){
+            return true;
+        }
+        return false;
+    }
+}
+______________________________________________________________________________
+output : [1, 1]
+______________________________________________________________________________
+
+
+Ques 3 : 
 ______________________________________________________________________________
 class Solution {
     // Function to calculate the number of subsets with a given sum
