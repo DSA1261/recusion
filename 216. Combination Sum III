@@ -1,0 +1,23 @@
+class Solution {
+    public List<List<Integer>> combinationSum3(int k, int n) {
+        List<List<Integer>> ans =new ArrayList<>();
+
+        fun(k,n,ans,new ArrayList<>(),1);
+
+        return ans;
+    }
+    public static void fun(int l,int t,List<List<Integer>>ans,List<Integer>list,int idx){
+        if(idx>9 ||list.size()>=l){
+            if(t==0 && list.size()==l){
+                ans.add(new ArrayList<>(list));
+            }
+            return ;
+        }
+
+        list.add(idx);
+        fun(l,t-idx,ans,list,idx+1);
+        list.remove(list.size()-1);
+        fun(l,t,ans,list,idx+1);
+
+    }
+}
