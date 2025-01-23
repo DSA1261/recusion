@@ -1,0 +1,46 @@
+__Subset Sum-I____________________
+class Solution {
+    public ArrayList<Integer> subsetSums(int[] arr) {
+        // code here
+        ArrayList<Integer> ans =new ArrayList<>();
+        fun(arr,ans,0,0);
+        
+        return ans;
+    }
+    public static void fun(int[] arr, List<Integer> ans, int idx,int sum){
+        if(idx==arr.length){
+            ans.add(sum);
+            return ;
+        }
+        sum+=arr[idx];
+        fun(arr,ans,idx+1,sum);
+        sum-=arr[idx];
+        fun(arr,ans,idx+1,sum);
+    }
+}
+____________
+
+Subset Sum-II
+__________________________
+class Solution {
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        List<List<Integer>> ans=new ArrayList<>();
+        Arrays.sort(nums);
+        fun(nums,ans,new ArrayList<>(),0);
+
+        return ans;
+    }
+    public static void fun(int[] arr,List<List<Integer>> ans,List<Integer> list,int idx){
+        ans.add(new ArrayList<>(list));
+
+        for(int j=idx;j<arr.length;j++){
+        if (j > idx && arr[j] == arr[j - 1]) { 
+                    continue; 
+                }
+            list.add(arr[j]);
+            fun(arr,ans,list,j+1);
+            list.remove(list.size()-1);
+        }
+    }
+}
+____________________
