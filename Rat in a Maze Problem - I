@@ -1,0 +1,47 @@
+class Solution {
+    // Function to find all possible paths
+    public ArrayList<String> findPath(ArrayList<ArrayList<Integer>> mat) {
+        // code here
+        ArrayList<String> list =new ArrayList<>();
+        
+        fun(mat,list,new StringBuilder(),0,0);
+        
+        return list;
+    }
+    
+    public static void fun(ArrayList<ArrayList<Integer>> mat,ArrayList<String> list,StringBuilder sb,int i,int j){
+        int n=mat.size();
+        if(i==n-1 && j==n-1) {
+            list.add(sb.toString());
+            return ;}
+        
+    
+    
+    if(i>=0 && j>=0&& i<n &&j<n && mat.get(i).get(j)==1){
+
+        
+        mat.get(i).set(j,2);
+        sb.append("D");
+        fun(mat,list,sb,i+1,j);
+        sb.deleteCharAt(sb.length()-1);
+        
+         sb.append("L");
+        fun(mat,list,sb,i,j-1);
+        sb.deleteCharAt(sb.length()-1);
+        
+        sb.append("R");
+        fun(mat,list,sb,i,j+1);
+        sb.deleteCharAt(sb.length()-1);
+        
+        sb.append("U");
+        fun(mat,list,sb,i-1,j);
+        sb.deleteCharAt(sb.length()-1);
+        
+        
+       
+       
+       mat.get(i).set(j,1);
+    }
+    
+    }
+}
